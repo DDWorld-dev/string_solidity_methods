@@ -1,3 +1,5 @@
+about this project https://teletype.in/@ddworld/nL9lgW4m4fY
+
 Solidity string methods
 
 str2uint - convert string to uint (input: string)
