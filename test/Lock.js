@@ -33,13 +33,13 @@ describe("stringMethods", function(){
     })
     it("should convert str1 to str2 with iteral ", async function(){
     
-      expect(await str.findIter("sbsbsbbsdbsbg", [4,2,10,12,1])).to.eq("sssgb");
+      expect(await str.findIter("My little pony", [4,2,10,12,1])).to.eq("i pny");
      
     })
     it("shoul sum str1 and str2", async function(){
-      const tx = await str.sum("hello ssgsrg", "worldGASGS rebea");
+      const tx = await str.sum("hello ", "world");
       console.log(tx);
-      //expect(await str.sum("hello ", "world")).to.eq("hello world");
+      expect(await str.sum("hello ", "world")).to.eq("hello world");
      
     })
 })

@@ -66,13 +66,13 @@ library stringMethods {
         uint len2 = bytes(str2).length;
         bytes memory bStr1 = bytes(str1);
         bytes memory bStr2 = bytes(str2);
-        bytes memory sumStr = new bytes(len1+len2+1);
+        bytes memory sumStr = new bytes(len1+len2);
         uint f = 0;
-        for(uint i = 0; i <= len1+len2; i++){
+        for(uint i = 0; i < len1+len2; i++){
             if(i < len1){
                 sumStr[i] = bStr1[i];
             }
-            if(i > len1){
+            if(i >= len1){
                 sumStr[i] = bStr2[f];
                 f++;   
             }
