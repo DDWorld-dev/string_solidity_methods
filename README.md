@@ -1,13 +1,11 @@
-# Sample Hardhat Project
+Solidity string methods
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+str2uint - convert string to uint (input: string)
 
-Try running some of the following tasks:
+uint2str - convert uint to string (input: uint)
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+findIter - returns a str2 from the str iterales (input: string, array uint)
+
+sum - str1 + str2 (input: string)
+
+split - split string by character (input: string)
