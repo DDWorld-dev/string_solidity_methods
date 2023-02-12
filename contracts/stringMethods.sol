@@ -63,8 +63,24 @@ library stringMethods {
     
     //Sum string
     function sum(string memory str1, string memory str2) public pure returns(string memory) {
-        
+        uint len1 = bytes(str1).length;
+        uint len2 = bytes(str2).length;
+        bytes memory bStr1 = bytes(str1);
+        bytes memory bStr2 = bytes(str2);
+        bytes memory sumStr = new bytes(len1+len2+1);
+        uint f = 0;
+        for(uint i = 0; i <= len1+len2; i++){
+            if(i < len1){
+                sumStr[i] = bStr1[i];
+            }
+            if(i > len1){
+                sumStr[i] = bStr2[f];
+                f++;   
+            }
+        }
+        return string(sumStr);
     }
+    
     //split string
     function split(string memory str1, string memory str2) public pure returns(string memory) {
         

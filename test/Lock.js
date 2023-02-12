@@ -31,9 +31,15 @@ describe("stringMethods", function(){
       expect(await str.eq("2515", "2515")).to.eq(true);
       expect(await str.eq("251", "2515")).to.eq(false);
     })
-    it("should mint convert str1 to str2 with iteral ", async function(){
+    it("should convert str1 to str2 with iteral ", async function(){
     
       expect(await str.findIter("sbsbsbbsdbsbg", [4,2,10,12,1])).to.eq("sssgb");
+     
+    })
+    it("shoul sum str1 and str2", async function(){
+      const tx = await str.sum("hello ssgsrg", "worldGASGS rebea");
+      console.log(tx);
+      //expect(await str.sum("hello ", "world")).to.eq("hello world");
      
     })
 })
