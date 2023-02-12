@@ -45,8 +45,7 @@ library stringMethods {
         return keccak256(abi.encode(str1)) == keccak256(abi.encode(str2));
     }
 
-    //find iterator string example: str = "gdsrhs, i = [1,5,2], return  str2 = "dhs"
-
+    //find iterator string example: str = "hello world, i = [2,4,3], return  str2 = "lol"
     function findIter(string memory str, uint[] memory i) public pure returns(string memory){
     
         bytes memory bStr = bytes(str);       
