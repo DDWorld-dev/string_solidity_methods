@@ -97,9 +97,10 @@ library stringMethods {
         uint iteralTempStr = 0;
         uint countArr = 0;
         uint lengthToSplit = 0;
-        uint i = 0;
-        while(i < bytes(str1).length-1){
-            uint temp = i; 
+        
+        for(uint i = 0; i < bytes(str1).length; i++){
+            uint temp = i;
+                
             while(str[temp] == bI[0]){
                 
                 for(uint j = 0; j < len1; j++){
@@ -132,7 +133,7 @@ library stringMethods {
                               
                     for(uint k = 0; k < iteralTempStr; k++){
                         t[k] = tempStr[k];
-                        
+                        tempStr[k] = 0x00;
                     }
                     arrStr[countArr] = string(t);
                     countArr++;
@@ -157,7 +158,7 @@ library stringMethods {
                 bytes memory t = new bytes(iteralTempStr);
                 for(uint k = 0; k < iteralTempStr; k++){
                     t[k] = tempStr[k];
-                  
+                    tempStr[k] = 0x00;
                 }
                 arrStr[countArr] = string(t);
                 if(countArr == 0){
@@ -170,7 +171,7 @@ library stringMethods {
                 }
                 return splitString; 
             }
-            i++;
+            
         }
         
     }
