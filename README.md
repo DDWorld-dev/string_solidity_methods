@@ -13,3 +13,5 @@ sum - str1 + str2 (input: string)
 split - split string by character (input: string)
 
 sort - sort string like ACII (input: string)
+
+len - find length string (input: string)
