@@ -43,7 +43,7 @@ describe("stringMethods", function(){
      
     })
     it("should split string ", async function(){
-      const tx = await str.split("XXUXUUUXUXUUXUXX", "XU");
+      const tx = await str.split("ZUXUZUZUXUZUXUZUDXUZUXUZXUZUXUZUXUZXUZUXUXZUXUXZUZXUXUZUXZUZXUUUZXUXZUXUZXUXZUZXUXUZXUZX", "XUZ");
       
       console.log(tx);
       

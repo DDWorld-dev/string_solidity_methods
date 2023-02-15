@@ -6,11 +6,11 @@ library stringMethods {
     //convert string to int
     function str2uint(string memory str) public pure returns(uint){
        
-        uint len = bytes(str).length;
+        
         uint num = 0;
         bytes memory str1 = bytes(str);
         
-        for(uint i = 0; i < len;i ++){ 
+        for(uint i = 0; i < bytes(str).length;i ++){ 
             num = num * 10 + (uint8(str1[i]) - 48);     
         }
         
@@ -84,24 +84,22 @@ library stringMethods {
     function split(string memory str1, string memory l) public pure returns(string[] memory) {
 
         //length 
-        uint len = bytes(str1).length;
         uint len1 = bytes(l).length;
         //str => bytes
         bytes memory bI = bytes(l);
         bytes memory str = bytes(str1);
         //temp array for split string
-        string[] memory arrStr = new string[](len);
+        string[] memory arrStr = new string[](bytes(str1).length);
         //temp str to add in array
-        bytes memory tempStr = new bytes(len);
+        bytes memory tempStr = new bytes(bytes(str1).length);
         //temp number 
         uint flag = 0;
         uint iteralTempStr = 0;
         uint countArr = 0;
         uint lengthToSplit = 0;
-        
-        for(uint i = 0; i < len; i++){
-            uint temp = i;
-                
+        uint i = 0;
+        while(i < bytes(str1).length-1){
+            uint temp = i; 
             while(str[temp] == bI[0]){
                 
                 for(uint j = 0; j < len1; j++){
@@ -112,7 +110,7 @@ library stringMethods {
                     }else{
                         flag = 0;
                     }
-                    if(temp >= len-1){
+                    if(temp >= bytes(str1).length-1){
 
                         if(j == len1-1){
                             flag = 0;
@@ -134,7 +132,7 @@ library stringMethods {
                               
                     for(uint k = 0; k < iteralTempStr; k++){
                         t[k] = tempStr[k];
-                        tempStr[k] = 0x00;
+                        
                     }
                     arrStr[countArr] = string(t);
                     countArr++;
@@ -145,7 +143,7 @@ library stringMethods {
                 i = i + len1*lengthToSplit;   
                 lengthToSplit = 0;
                 
-                if(i > len-1){
+                if(i > bytes(str1).length-1){
                     string[] memory splitString = new string[](countArr);
                     for(uint p = 0; p < countArr; p++){
                         splitString[p] = arrStr[p];
@@ -155,11 +153,11 @@ library stringMethods {
             }
             tempStr[iteralTempStr] = str[i];
             iteralTempStr++;
-            if(len-1 <= i){  
+            if(bytes(str1).length-1 <= i){  
                 bytes memory t = new bytes(iteralTempStr);
                 for(uint k = 0; k < iteralTempStr; k++){
                     t[k] = tempStr[k];
-                    tempStr[k] = 0x00;
+                  
                 }
                 arrStr[countArr] = string(t);
                 if(countArr == 0){
@@ -172,7 +170,7 @@ library stringMethods {
                 }
                 return splitString; 
             }
-            
+            i++;
         }
         
     }
@@ -193,10 +191,10 @@ library stringMethods {
         return string(bStr);
     }
 
-    
+
     //length string str = "Hello" == 4
     function len(string memory str) public pure returns(uint) {
         return bytes(str).length-1;
     }
-    
+
 }
