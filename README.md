@@ -11,3 +11,5 @@ findIter - returns a str2 from the str iterales (input: string, array uint)
 sum - str1 + str2 (input: string)
 
 split - split string by character (input: string)
+
+sort - sort string like ACII (input: string)
