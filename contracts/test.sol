@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./stringMethods.sol";
 
-contract myGame{
+contract test{
     using stringMethods for string;
     using stringMethods for uint;
 
@@ -25,5 +25,8 @@ contract myGame{
     function sum(string memory str1, string memory str2) public pure returns(string memory){
         return str1.sum(str2);
     }
-    
+    function split(string memory str, string memory s) public pure returns(string[] memory){
+        return str.split(s);
+    }
+
 }

@@ -80,8 +80,103 @@ library stringMethods {
         return string(sumStr);
     }
     
-    //split string
-    function split(string memory str1, string memory str2) public pure returns(string memory) {
+    //split string str = "XXUXUUUXUXUUXUXX" split to "XU" arr = [ 'X', 'UU', 'U', 'XX' ] Not optimized!!!
+    function split(string memory str1, string memory l) public pure returns(string[] memory) {
+
+        //length 
+        uint len = bytes(str1).length;
+        uint len1 = bytes(l).length;
+        //str => bytes
+        bytes memory bI = bytes(l);
+        bytes memory str = bytes(str1);
+        //temp array for split string
+        string[] memory arrStr = new string[](len);
+        //temp str to add in array
+        bytes memory tempStr = new bytes(len);
+        //temp number 
+        uint flag = 0;
+        uint iteralTempStr = 0;
+        uint countArr = 0;
+        uint lengthToSplit = 0;
+        
+        for(uint i = 0; i < len; i++){
+            uint temp = i;
+                
+            while(str[temp] == bI[0]){
+                
+                for(uint j = 0; j < len1; j++){
+                      
+                    if(bI[j] != str[temp]){ 
+                        flag = 1;
+                        break;
+                    }else{
+                        flag = 0;
+                    }
+                    if(temp >= len-1){
+
+                        if(j == len1-1){
+                            flag = 0;
+                        }else{ 
+                            flag = 1;
+                        }
+                        break;
+                    }
+                    temp++;
+                }
+                if(flag == 1){
+                    break;     
+                }else{
+                    lengthToSplit++;
+                }
+
+                if(iteralTempStr > 0 ){
+                    bytes memory t = new bytes(iteralTempStr);
+                              
+                    for(uint k = 0; k < iteralTempStr; k++){
+                        t[k] = tempStr[k];
+                        tempStr[k] = 0x00;
+                    }
+                    arrStr[countArr] = string(t);
+                    countArr++;
+                }
+                
+                iteralTempStr = 0;
+                flag = 0;  
+                i = i + len1*lengthToSplit;   
+                lengthToSplit = 0;
+                
+                if(i > len-1){
+                    string[] memory splitString = new string[](countArr);
+                    for(uint p = 0; p < countArr; p++){
+                        splitString[p] = arrStr[p];
+                    }
+                    return splitString;
+                }
+            }
+            tempStr[iteralTempStr] = str[i];
+            iteralTempStr++;
+            if(len-1 <= i){  
+                bytes memory t = new bytes(iteralTempStr);
+                for(uint k = 0; k < iteralTempStr; k++){
+                    t[k] = tempStr[k];
+                    tempStr[k] = 0x00;
+                }
+                arrStr[countArr] = string(t);
+                if(countArr == 0){
+                     return arrStr;
+                }
+                string[] memory splitString = new string[](countArr+1);
+                for(uint p = 0; p < countArr+1; p++){
+                    splitString[p] = arrStr[p];
+
+                }
+                return splitString; 
+            }
+            
+        }
         
     }
+    
+    
+    //sort string
 }
