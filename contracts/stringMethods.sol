@@ -178,5 +178,25 @@ library stringMethods {
     }
     
     
-    //sort string
+    //sort string str = "BACD" == "ABCD"
+    function sort(string memory str) public pure returns(string memory){
+        bytes memory bStr = bytes(str);
+        for(uint i = 0; i < bytes(str).length; i++){
+            for(uint j = i; j < bytes(str).length; j++){
+                if(bStr[i] > bStr[j]){
+                    bytes1 temp = bStr[i];
+                    bStr[i] = bStr[j];
+                    bStr[j] = temp;
+                }
+            }
+        }
+        return string(bStr);
+    }
+
+    
+    //length string str = "Hello" == 4
+    function len(string memory str) public pure returns(uint) {
+        return bytes(str).length-1;
+    }
+    
 }

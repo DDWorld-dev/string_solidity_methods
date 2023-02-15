@@ -28,5 +28,7 @@ contract test{
     function split(string memory str, string memory s) public pure returns(string[] memory){
         return str.split(s);
     }
-
+    function sort(string memory str) public pure returns(string memory){
+        return str.sort();
+    }
 }
